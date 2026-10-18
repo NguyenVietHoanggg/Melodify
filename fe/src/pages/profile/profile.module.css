@@ -1,0 +1,181 @@
+.headerAvatar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.headerAvatar:hover .editAvatarHover,
+.editAvatar:hover .editAvatarHover {
+  opacity: 1;
+}
+.editAvatarHover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 70%);
+  opacity: 0;
+  transition: opacity var(--duration-short);
+  font-size: var(--text-size-base);
+  font-weight: 700;
+}
+.follow {
+  min-height: 32px;
+  padding: 3px 15px;
+}
+.nothing {
+  padding: 32px 12px;
+}
+.trackSection {
+  padding: 0 12px;
+}
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.sectionTitle {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.sectionTitle a:hover {
+  text-decoration: underline;
+}
+.sectionSub {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.shelfWrap {
+  position: relative;
+}
+.shelfSub {
+  position: absolute;
+  top: 36px;
+  left: 12px;
+}
+.shelfWrap:has(.shelfSub) > section {
+  padding-bottom: 4px;
+}
+.shelfWrap:has(.shelfSub) > section > div:first-child {
+  margin-bottom: 28px;
+}
+.showAll {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.showAll:hover {
+  text-decoration: underline;
+}
+.listHead {
+  padding: 24px 0 16px;
+}
+.listOwner {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  font-weight: 700;
+}
+.listOwner:hover {
+  text-decoration: underline;
+}
+.listTitle {
+  font-size: var(--text-size-larger-2);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* "Profile details" dialog */
+.editDialog {
+  width: min(524px, calc(100vw - 32px));
+}
+.editGrid {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+@media (max-width: 520px) {
+  .editGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+.editAvatarWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.editAvatar {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+}
+.removePhoto {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.removePhoto:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+.editFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nameField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.nameField span {
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  padding: 0 4px;
+  background: var(--background-elevated-base);
+  font-size: var(--text-size-smaller-2);
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity var(--duration-short);
+}
+.nameField:focus-within span {
+  opacity: 1;
+}
+.nameField input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-base);
+  background: #ffffff1a;
+  color: var(--text-base);
+  font: inherit;
+  font-size: var(--text-size-smaller);
+}
+.nameField input:focus {
+  outline: none;
+  border-color: #535353;
+  background: #333;
+}
+.editFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+.disclaimer {
+  margin-top: 16px;
+  font-size: var(--text-size-smaller-2);
+  font-weight: 700;
+  line-height: 1.5;
+}

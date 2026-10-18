@@ -1,0 +1,87 @@
+/* Spotify's Settings page: 32px title, sections with bold 16px headings, label left / control right. */
+.settings {
+  max-width: 880px;
+  padding: 24px var(--content-spacing) 0;
+}
+.title {
+  font-size: var(--text-size-larger-2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 16px 0 8px;
+}
+.section {
+  padding: 24px 0 8px;
+}
+.section h2 {
+  font-size: var(--text-size-base);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 40px;
+  padding: 4px 0;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  line-height: 1.4;
+}
+.label small {
+  font-size: var(--text-size-smaller-2);
+  color: var(--essential-subdued);
+}
+.control {
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+.select {
+  min-width: 220px;
+}
+.select select {
+  min-height: 32px;
+  padding: 6px 36px 6px 12px;
+  font-size: var(--text-size-smaller);
+  background: var(--background-elevated-highlight);
+  box-shadow: none;
+}
+.crossfade {
+  display: flex;
+  align-items: center;
+}
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0 12px;
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+}
+.slider {
+  flex: 1;
+  max-width: 360px;
+}
+.version {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+
+/* Narrow page (phones): a select goes under its label instead of squeezing it; switches stay on the right. */
+@container main (max-width: 560px) {
+  .row:has(.select) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .select {
+    min-width: 0;
+    width: 100%;
+  }
+}

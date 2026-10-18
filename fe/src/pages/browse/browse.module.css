@@ -1,0 +1,18 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 232px;
+  padding: 24px var(--content-spacing);
+  background-image: linear-gradient(transparent 0, rgb(0 0 0 / 50%) 100%);
+}
+.title {
+  font-size: clamp(3rem, 8cqw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.body {
+  position: relative;
+  background-image: linear-gradient(color-mix(in srgb, var(--cat-color) 40%, transparent), var(--background-base) 232px);
+}

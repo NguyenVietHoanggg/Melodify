@@ -1,0 +1,334 @@
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  --cover-size: clamp(128px, 22cqw, 232px);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  min-height: 300px;
+  margin-top: -64px; /* slide under the sticky bar */
+  padding: calc(64px + 24px) var(--content-spacing) 24px;
+  background-color: var(--entity-color);
+  background-image: linear-gradient(transparent 0, rgb(0 0 0 / 50%) 100%);
+}
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--background-noise, none);
+  opacity: 0.05;
+  pointer-events: none;
+}
+.cover {
+  width: var(--cover-size);
+  flex: none;
+  box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+  border-radius: var(--radius-base);
+}
+.coverRound,
+.coverRound > div {
+  border-radius: 50%;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  z-index: 1;
+}
+.label {
+  font-size: var(--text-size-smaller);
+  font-weight: 500;
+}
+.title {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 4px 0 6px;
+  overflow-wrap: anywhere;
+}
+.titleXL {
+  font-size: clamp(2rem, 7.6cqw, 6rem);
+}
+.titleL {
+  font-size: clamp(2rem, 6cqw, 4.5rem);
+}
+.titleM {
+  font-size: clamp(1.75rem, 4.6cqw, 3.5rem);
+}
+.titleS {
+  font-size: clamp(1.5rem, 3.4cqw, 2.25rem);
+  letter-spacing: -0.02em;
+}
+.editable {
+  cursor: pointer;
+}
+.description {
+  font-size: var(--text-size-smaller);
+  color: #ffffffb3;
+}
+.description a {
+  color: #fff;
+}
+.description a:hover {
+  text-decoration: underline;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-size-smaller);
+  color: #ffffffb3;
+}
+.meta strong,
+.meta a strong {
+  color: #fff;
+  font-weight: 700;
+}
+.meta a:hover {
+  text-decoration: underline;
+}
+.dot {
+  margin: 0 2px;
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 4px;
+}
+
+/* Artist banner header */
+.bannerHeader {
+  min-height: clamp(280px, 30vh, 400px);
+  padding: 0;
+  align-items: flex-end;
+  background: var(--entity-color);
+  overflow: hidden;
+}
+.banner {
+  position: absolute;
+  inset: 0;
+  background: center 20% / cover no-repeat;
+}
+.bannerShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 30%, rgb(0 0 0 / 50%));
+}
+.bannerText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 var(--content-spacing) 24px;
+  z-index: 1;
+}
+.verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-size-smaller);
+}
+
+/* ── Body (gradient continuation) ────────────────────────── */
+.body {
+  position: relative;
+}
+.bodyGradient {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 232px;
+  background-color: var(--entity-color);
+  background-image: linear-gradient(rgb(0 0 0 / 60%) 0, var(--background-base) 100%);
+  pointer-events: none;
+}
+.bodyContent {
+  position: relative;
+}
+
+/* ── Action bar ──────────────────────────────────────────── */
+.actionBar {
+  container: action-bar / inline-size;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px var(--content-spacing);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  min-width: 0;
+}
+.actionsRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bigIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-subdued);
+  transition: transform 33ms, color 150ms;
+}
+.bigIcon:hover {
+  color: var(--text-base);
+  transform: scale(1.04);
+}
+.bigIcon.on {
+  color: var(--accent);
+}
+.viewToggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+/* Narrow page: only the icon stays (the button keeps its name for screen readers via aria-label). */
+@container action-bar (max-width: 520px) {
+  .viewToggleLabel {
+    display: none;
+  }
+}
+.viewToggle:hover {
+  color: var(--text-base);
+}
+.listArea {
+  padding: 0 var(--content-spacing);
+}
+
+/* ── Sticky bar ──────────────────────────────────────────── */
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  height: 64px;
+  margin-bottom: 0;
+  pointer-events: none;
+}
+.stickyBg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--entity-color);
+  background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%));
+}
+.stickyContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 64px;
+  padding: 0 var(--content-spacing);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 250ms, transform 250ms;
+}
+.stickyVisible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.stickyTitle {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Sections below lists ────────────────────────────────── */
+.below {
+  padding: 32px var(--content-spacing) 0;
+}
+.belowHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.belowHead h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.belowHead p {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.copyright {
+  padding: 24px var(--content-spacing) 0;
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+  line-height: 1.6;
+}
+.copyright strong {
+  display: block;
+  font-size: var(--text-size-smaller);
+  font-weight: 400;
+}
+.findMore {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px var(--content-spacing) 0;
+  border-top: 1px solid #ffffff1a;
+  margin-top: 32px;
+}
+.findMore h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+}
+.findInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(420px, 100%);
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-base);
+  background: #ffffff1a;
+  color: var(--text-subdued);
+}
+.findInput input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--text-size-smaller);
+}
+
+/* Narrow page (phones): cover on top, centred, then the text — like Spotify's mobile app. */
+@container main (max-width: 560px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    min-height: 0;
+  }
+  .cover {
+    --cover-size: min(62cqw, 260px);
+    align-self: center;
+  }
+  .titleXL,
+  .titleL,
+  .titleM {
+    font-size: clamp(1.75rem, 9cqw, 2.5rem);
+  }
+  /* The artist banner keeps its height: the name sits at the bottom of the photo. */
+  .bannerHeader {
+    min-height: clamp(260px, 72cqw, 360px);
+    justify-content: flex-end;
+  }
+}

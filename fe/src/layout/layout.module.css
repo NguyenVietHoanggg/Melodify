@@ -1,0 +1,136 @@
+.root {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  padding: 0 var(--panel-gap) var(--panel-gap);
+  column-gap: var(--panel-gap);
+  grid-template-rows: var(--topbar-height) minmax(0, 1fr) auto;
+  background: var(--background-app);
+  overflow: hidden;
+}
+
+.panel {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border-radius: var(--radius-larger-2);
+  background: var(--background-base);
+  overflow: hidden;
+}
+
+.left {
+  grid-area: left;
+}
+/* Tablet: the right panel slides over the page instead of taking a column. */
+.drawer {
+  position: absolute;
+  top: var(--topbar-height);
+  right: var(--panel-gap);
+  bottom: calc(var(--player-height) + var(--panel-gap) * 2);
+  z-index: 40;
+  display: flex;
+  width: min(360px, calc(100vw - 96px));
+  border-radius: var(--radius-larger-2);
+  box-shadow: 0 16px 48px rgb(0 0 0 / 60%);
+}
+.drawer > * {
+  flex: 1;
+  min-width: 0;
+}
+.main {
+  grid-area: main;
+}
+.right {
+  grid-area: right;
+}
+.bottom {
+  grid-area: bottom;
+  padding-top: var(--panel-gap);
+  min-width: 0;
+}
+
+.resize {
+  position: absolute;
+  top: var(--topbar-height);
+  bottom: calc(var(--player-height) + var(--panel-gap) * 2);
+  width: var(--panel-gap);
+  cursor: col-resize;
+  z-index: 5;
+}
+.resize::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3px;
+  width: 1px;
+  background: transparent;
+  transition: background-color 150ms;
+}
+.resize:hover::after {
+  background: #ffffff4d;
+}
+.resizeLeft {
+  left: calc(var(--panel-gap) + var(--left-width));
+}
+.resizeRight {
+  right: calc(var(--panel-gap) + var(--right-width));
+}
+
+/* ── Main view ───────────────────────────────────────────── */
+.mainScroll {
+  height: 100%;
+  container-type: inline-size;
+  container-name: main;
+}
+.mainContent {
+  min-height: 100%;
+  position: relative;
+}
+
+/* ── Toaster ─────────────────────────────────────────────── */
+.toaster {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--player-height) + 32px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 950;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  max-width: min(560px, 90vw);
+  border-radius: var(--radius-larger-2);
+  background: #fff;
+  color: #000;
+  font-size: var(--text-size-smaller);
+  font-weight: 500;
+  box-shadow: var(--shadow-card);
+  pointer-events: auto;
+  animation: toastIn 250ms var(--ease-standard);
+}
+.toast button {
+  font-weight: 700;
+  text-decoration: underline;
+  color: #000;
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@media (max-width: 767px) {
+  /* Above the mini player and the tab bar. */
+  .toaster {
+    bottom: calc(136px + env(safe-area-inset-bottom));
+    width: calc(100vw - 32px);
+  }
+}

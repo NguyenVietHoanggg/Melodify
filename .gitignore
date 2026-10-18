@@ -1,0 +1,23 @@
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
+# Tooling caches
+.vite/
+supabase/.temp/
+
+# Local caches (downloaded catalog data)
+.cache/
+!.env.localdb
+
+docs/
+.history/

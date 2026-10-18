@@ -1,0 +1,256 @@
+.list {
+  container: tracklist / inline-size;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: grid;
+  gap: 16px;
+  height: 36px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  border-bottom: 1px solid #ffffff1a;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  position: sticky;
+  top: 64px;
+  z-index: 3;
+}
+/* Once stuck under the sticky bar: solid background, full width of the main view (columns stay aligned
+   because margin and padding grow by the same amount). */
+.headerStuck {
+  margin-inline: calc(-1 * var(--content-spacing, 16px));
+  padding-inline: calc(16px + var(--content-spacing, 16px));
+  background: var(--background-base);
+  box-shadow: 0 6px 12px -8px rgb(0 0 0 / 60%);
+}
+.sentinel {
+  height: 1px;
+  margin-bottom: -1px;
+  pointer-events: none;
+}
+.row {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: var(--radius-base);
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+  user-select: none;
+  outline: none;
+}
+.compactRow {
+  height: 32px;
+}
+.row:hover {
+  background: #ffffff1a;
+}
+.selected,
+.selected:hover {
+  background: #5a5a5a;
+}
+.disabled {
+  opacity: 0.4;
+}
+.index {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 16px;
+  font-size: var(--text-size-base);
+  font-variant-numeric: tabular-nums;
+}
+.number {
+  display: inline-flex;
+}
+.rowPlay {
+  position: absolute;
+  right: -4px;
+  display: none;
+  color: var(--text-base);
+}
+.row:hover .number,
+.row:focus-within .number {
+  visibility: hidden;
+}
+.row:hover .rowPlay,
+.row:focus-within .rowPlay {
+  display: grid;
+}
+.current .number {
+  color: var(--accent);
+}
+.sparkle {
+  color: var(--accent);
+}
+.first {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.cover {
+  width: 40px;
+  flex: none;
+}
+.titles {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.title {
+  font-size: var(--text-size-base);
+  color: var(--text-base);
+  line-height: 1.4;
+}
+.title:hover {
+  text-decoration: underline;
+}
+.current .title {
+  color: var(--accent);
+}
+.sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-size-smaller);
+}
+.sub a:hover,
+.subLink:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+.row:hover .sub,
+.row:hover .cell {
+  color: var(--text-base);
+}
+.cell {
+  min-width: 0;
+}
+.mono {
+  font-variant-numeric: tabular-nums;
+}
+.last {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.clock {
+  display: grid;
+  margin-right: 32px;
+}
+.like {
+  display: grid;
+  place-items: center;
+  color: var(--text-subdued);
+  visibility: hidden;
+}
+.row:hover .like,
+.liked {
+  visibility: visible;
+}
+.like:hover {
+  color: var(--text-base);
+  transform: scale(1.04);
+}
+.liked,
+.liked:hover {
+  color: var(--accent);
+}
+.duration {
+  min-width: 36px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.more {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--text-base);
+  visibility: hidden;
+}
+.row:hover .more,
+.more[data-state='open'] {
+  visibility: visible;
+}
+.addButton {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: var(--radius-rounded);
+  box-shadow: inset 0 0 0 1px var(--essential-subdued);
+  color: var(--text-base);
+  font-weight: 700;
+}
+.addButton:hover {
+  box-shadow: inset 0 0 0 1px #fff;
+  transform: scale(1.04);
+}
+
+/* Mix transitions between rows */
+.transition {
+  display: flex;
+  justify-content: center;
+  height: 0;
+  position: relative;
+  z-index: 1;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  margin-top: -11px;
+  padding: 0 10px;
+  border-radius: var(--radius-rounded);
+  background: #2a2a2a;
+  color: var(--text-base);
+  font-size: var(--text-size-smaller-2);
+  font-weight: 600;
+  box-shadow: 0 0 0 3px var(--background-base);
+}
+.pill:hover:not(:disabled) {
+  background: var(--accent);
+  color: #000;
+}
+.pillTime {
+  opacity: 0.7;
+}
+.pillAuto {
+  padding: 0 4px;
+  border-radius: 3px;
+  background: #ffffff26;
+  font-size: 10px;
+}
+
+/* Touch screens have no hover: the "…" (and like) buttons must always be visible there. */
+@media (hover: none) {
+  .more,
+  .like {
+    visibility: visible;
+  }
+}
+
+/* Narrow list (phones): title and "…" only, like Spotify's mobile app. */
+@container tracklist (max-width: 520px) {
+  .row,
+  .header {
+    grid-template-columns: [index] 16px [first] minmax(0, 1fr) [last] auto !important;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .duration,
+  .like,
+  .clock {
+    display: none;
+  }
+  .more {
+    visibility: visible;
+    width: 32px;
+    height: 32px;
+  }
+}

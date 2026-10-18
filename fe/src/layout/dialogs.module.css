@@ -1,0 +1,102 @@
+.credits {
+  width: min(480px, calc(100vw - 32px));
+}
+.creditsBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.creditsBody h4 {
+  font-size: var(--text-size-base);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.creditsBody p {
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+}
+.creditsBody a:hover {
+  text-decoration: underline;
+}
+.trackTitle {
+  font-size: var(--text-size-large);
+  font-weight: 700;
+}
+.person {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.person a {
+  font-weight: 600;
+}
+.person span {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.external {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-size-smaller);
+}
+
+.shortcuts {
+  width: min(560px, calc(100vw - 32px));
+}
+.shortcutList {
+  display: flex;
+  flex-direction: column;
+}
+.shortcutRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ffffff14;
+  font-size: var(--text-size-smaller);
+}
+.shortcutRow dt {
+  color: var(--text-subdued);
+}
+.shortcutRow kbd {
+  display: inline-block;
+  min-width: 24px;
+  padding: 2px 8px;
+  border-radius: var(--radius-base);
+  background: var(--background-tinted-highlight);
+  color: var(--text-base);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+}
+.plus {
+  margin: 0 6px;
+  color: var(--text-subdued);
+}
+
+.report {
+  width: min(480px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.reasons {
+  flex-direction: column;
+  gap: 12px;
+}
+.muted {
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.promptForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

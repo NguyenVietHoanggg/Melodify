@@ -1,0 +1,328 @@
+/* accounts.spotify.com: gradient backdrop, #121212 card (734px), 324px column, 48px title. */
+.page {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  background: linear-gradient(rgb(255 255 255 / 10%) 0%, rgb(0 0 0) 100%), #121212;
+}
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 734px;
+  height: fit-content;
+  padding: 32px 16px 64px;
+  border-radius: var(--radius-larger-2);
+  background: var(--background-base);
+  overflow: hidden;
+}
+.wide .column {
+  width: min(436px, 100%);
+}
+@media (max-width: 760px) {
+  .page {
+    padding: 0;
+    background: var(--background-base);
+  }
+  .card {
+    border-radius: 0;
+  }
+}
+.progress {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: #ffffff1a;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 300ms var(--ease-standard);
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.column {
+  width: min(324px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-bottom: 24px;
+}
+@media (max-width: 760px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+.stepTitle {
+  font-size: var(--text-size-base);
+  font-weight: 700;
+}
+.stepLabel {
+  font-size: var(--text-size-base);
+  color: var(--text-subdued);
+}
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.back {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-subdued);
+}
+.back:hover {
+  color: var(--text-base);
+}
+.submit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  font-size: var(--text-size-base);
+}
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-base);
+  background: #e91429;
+  color: #fff;
+  font-size: var(--text-size-smaller);
+  line-height: 1.4;
+}
+.banner > svg {
+  flex: none;
+}
+.notice {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-base);
+  background: var(--background-highlight);
+  font-size: var(--text-size-smaller);
+  line-height: 1.5;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  color: var(--text-base);
+  font-size: var(--text-size-smaller);
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid #292929;
+}
+.providers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.providerButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 32px 8px 48px;
+  border-radius: var(--radius-rounded);
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+  font-size: var(--text-size-base);
+  font-weight: 700;
+  transition: box-shadow var(--duration-short);
+}
+.providerButton:hover {
+  box-shadow: inset 0 0 0 1px var(--text-base);
+}
+.providerLogo {
+  position: absolute;
+  left: 32px;
+  display: flex;
+}
+.alt {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #292929;
+  text-align: center;
+  color: var(--text-subdued);
+  font-size: var(--text-size-base);
+}
+.alt a,
+.link {
+  color: var(--text-base);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.alt a:hover,
+.link:hover {
+  color: var(--accent);
+}
+.textButton {
+  align-self: center;
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: var(--text-size-base);
+}
+.textButton:hover {
+  color: var(--accent);
+}
+.small {
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+  line-height: 1.5;
+  text-align: center;
+}
+.emailChip {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px 4px 12px;
+  border-radius: var(--radius-rounded);
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+  font-size: var(--text-size-smaller);
+}
+.emailChip button {
+  padding: 4px 8px;
+  border-radius: var(--radius-rounded);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.emailChip button:hover {
+  color: var(--text-base);
+}
+
+/* Code boxes */
+.code {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.codeBox {
+  width: 48px;
+  height: 56px;
+  border: 0;
+  border-radius: var(--radius-base);
+  background: var(--background-base);
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+  color: var(--text-base);
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+.codeFocus,
+.codeBox:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--text-base);
+}
+.codeInvalid {
+  box-shadow: inset 0 0 0 1px var(--essential-negative);
+}
+
+/* Password rules */
+.rules {
+  font-size: var(--text-size-smaller);
+}
+.rulesTitle {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.rules ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rules li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ruleOk {
+  color: var(--text-base);
+}
+.ruleIcon {
+  display: inline-flex;
+  color: var(--accent);
+}
+.ruleCircle {
+  width: 12px;
+  height: 12px;
+  margin: 1px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+}
+
+/* Date of birth: dd / month / yyyy */
+.dob {
+  display: grid;
+  grid-template-columns: 72px 1fr 96px;
+  gap: 8px;
+}
+.legend {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.hint {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  line-height: 1.4;
+}
+.legal {
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+  line-height: 1.6;
+}
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.successIcon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000;
+}
+.backHome {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 1;
+}
+@media (max-width: 800px) {
+  /* Narrow screens: the card fills the width, so the button sits above it instead of beside it. */
+  .page {
+    padding-top: 72px;
+  }
+  .backHome {
+    top: 20px;
+    left: 16px;
+  }
+}

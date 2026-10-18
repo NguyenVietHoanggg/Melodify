@@ -1,0 +1,229 @@
+/* ── Phone layout (< 768px): one column, mini player + tab bar at the bottom ─────────────────────── */
+.root {
+  --topbar-height: 56px;
+  --panel-gap: 0px;
+  display: grid;
+  grid-template-rows: var(--topbar-height) minmax(0, 1fr) auto auto;
+  grid-template-areas: 'top' 'main' 'player' 'nav';
+  height: 100vh;
+  height: 100dvh; /* the visible height on phones, without the browser's toolbars */
+  background: var(--background-base);
+  overflow: hidden;
+}
+.root > header {
+  margin: 0;
+}
+.main {
+  grid-area: main;
+  min-height: 0;
+  background: var(--background-base);
+}
+.main > * {
+  height: 100%;
+  border-radius: 0;
+}
+.player {
+  grid-area: player;
+  min-width: 0;
+  padding: 0 8px;
+}
+
+/* Tab bar */
+.bottomNav {
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, #000 40%);
+}
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+  color: var(--text-subdued);
+  font-size: 11px;
+  font-weight: 500;
+}
+.tabActive {
+  color: var(--text-base);
+}
+
+/* Mini player */
+.mini {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 56px;
+  padding: 8px;
+  border-radius: var(--radius-larger);
+  background: #3a3a3a;
+  overflow: hidden;
+  cursor: pointer;
+}
+.miniCover {
+  width: 40px;
+  flex: none;
+}
+.miniText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+.miniTitle {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.miniSub {
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+}
+.miniPlay {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  color: var(--text-base);
+}
+.miniPlay:disabled {
+  opacity: 0.4;
+}
+.miniProgress {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--text-base);
+  transform-origin: left;
+}
+
+/* Full-screen player */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: #121212;
+  animation: sheetUp 220ms var(--ease-standard);
+}
+@keyframes sheetUp {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+.sheetBackdrop {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  object-fit: cover;
+  filter: blur(48px) brightness(0.45);
+}
+.sheetScroll {
+  position: relative;
+  height: 100%;
+  padding: 8px 20px calc(24px + env(safe-area-inset-bottom));
+}
+.sheetHeader {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  height: 56px;
+}
+.sheetContext {
+  text-align: center;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.sheetSpacer {
+  width: 40px;
+}
+.sheetCover {
+  width: min(100%, 52vh);
+  margin: 16px auto 24px;
+}
+.sheetTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sheetTitleText {
+  flex: 1;
+  min-width: 0;
+}
+.sheetTitleText h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.sheetTitleText p {
+  color: var(--text-subdued);
+}
+.sheetControls {
+  margin-top: 16px;
+}
+.sheetControls > div {
+  max-width: none;
+}
+/* Finger-sized controls: 56px play button, 28px icons spread across the width. */
+.sheetControls [data-testid='player-controls'] {
+  order: 2;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 8px;
+}
+.sheetControls [data-testid='player-controls'] > div {
+  gap: 24px;
+}
+.sheetControls [data-testid='player-controls'] svg {
+  width: 28px;
+  height: 28px;
+}
+.sheetControls [data-testid='control-button-playpause'] {
+  width: 64px;
+  height: 64px;
+}
+.sheetControls [data-testid='control-button-playpause'] svg {
+  width: 28px;
+  height: 28px;
+}
+.sheetActions svg {
+  width: 20px;
+  height: 20px;
+}
+.sheetActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.sheetLink {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-subdued);
+}
+.sheetExtra {
+  margin-top: 24px;
+}
+
+/* Side panels (queue, devices, friends…) open over everything on a phone */
+.panelSheet {
+  position: fixed;
+  inset: 0;
+  z-index: 850;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-base);
+}
+.panelSheet > * {
+  flex: 1;
+  min-height: 0;
+  border-radius: 0;
+}

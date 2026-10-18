@@ -1,0 +1,102 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--player-height);
+  padding: 11px 24px 7px 15px;
+  background: linear-gradient(90deg, #af2896, #509bf5);
+  border-radius: var(--radius-base);
+  cursor: default;
+}
+.text {
+  min-width: 0;
+}
+.title {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.body {
+  font-size: var(--text-size-base);
+  font-weight: 500;
+}
+/* Phones: one slim strip above the tab bar — title + button, the long sentence goes. */
+@media (max-width: 767px) {
+  .banner {
+    min-height: 56px;
+    gap: 12px;
+    padding: 8px 8px 8px 12px;
+  }
+  .body {
+    display: none;
+  }
+  .title {
+    font-size: var(--text-size-smaller);
+  }
+  .banner button {
+    min-height: 36px;
+    padding: 0 16px;
+    font-size: var(--text-size-smaller);
+  }
+}
+
+/* ── Login prompt modal ("Start listening with a free account") ─ */
+.prompt {
+  width: min(810px, calc(100vw - 32px));
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 64px;
+  align-items: center;
+  border-radius: var(--radius-larger-2);
+  background: linear-gradient(180deg, var(--prompt-color, #535353) 0%, #282828 100%);
+}
+.promptCover {
+  width: 300px;
+  box-shadow: var(--shadow-card);
+}
+.promptBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.promptTitle {
+  font-size: var(--text-size-larger-2);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.promptAlt {
+  margin-top: 16px;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.promptAlt a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+.promptClose {
+  position: absolute;
+  left: 50%;
+  bottom: -56px;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.promptClose:hover {
+  color: #fff;
+  transform: translateX(-50%) scale(1.04);
+}
+@media (max-width: 860px) {
+  .prompt {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+  .promptCover {
+    display: none;
+  }
+}

@@ -1,0 +1,525 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 16px 8px;
+  min-height: 56px;
+}
+.headerTitle {
+  font-size: var(--text-size-base);
+  font-weight: 700;
+}
+.headerActions {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.muted {
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+}
+.muted a:hover {
+  text-decoration: underline;
+  color: var(--text-base);
+}
+.link {
+  flex: none;
+  white-space: nowrap;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.link:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+.empty {
+  padding: 24px 0;
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+  text-align: center;
+}
+
+/* Now playing view */
+.bigCover {
+  width: 100%;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.titleText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.trackTitle {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.trackTitle:hover {
+  text-decoration: underline;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: -6px;
+}
+.features span {
+  padding: 2px 10px;
+  border-radius: var(--radius-rounded);
+  background: var(--background-tinted-base);
+  font-size: var(--text-size-smaller-2);
+  font-weight: 600;
+  color: var(--text-subdued);
+  text-transform: capitalize;
+}
+.card {
+  border-radius: var(--radius-larger-2);
+  background: var(--background-highlight);
+  overflow: hidden;
+}
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 4px;
+}
+/* Long Vietnamese titles wrap on the left; the link ("Hiện tất cả", "Mở danh sách chờ") stays on one line. */
+.cardHead h3 {
+  min-width: 0;
+  font-size: var(--text-size-base);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.cardHead .link {
+  padding-top: 2px;
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+/* The row bleeds 8px into this padding (.qrow margin), so its hover highlight keeps an 8px gap to the card
+   edge while the cover lines up with the card title — like Spotify's "Next in queue" card. */
+.cardQueue {
+  padding: 4px 16px 12px;
+}
+.aboutImage {
+  position: relative;
+  height: 220px;
+  background: #333 center / cover no-repeat;
+}
+.aboutImage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 50%) 0%, transparent 35%);
+}
+.aboutLabel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  font-weight: 700;
+}
+.aboutName {
+  font-weight: 700;
+}
+.aboutName:hover {
+  text-decoration: underline;
+}
+.aboutRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bio {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.creditRow {
+  display: flex;
+  flex-direction: column;
+}
+.creditRow a {
+  font-weight: 600;
+}
+.creditRow a:hover {
+  text-decoration: underline;
+}
+.adCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: var(--radius-larger-2);
+}
+.adCard h3 {
+  font-size: var(--text-size-larger);
+  font-weight: 800;
+}
+.adBadge {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: var(--radius-base);
+  background: rgb(0 0 0 / 30%);
+  font-size: var(--text-size-smaller-2);
+  font-weight: 700;
+}
+.adBy {
+  font-size: var(--text-size-smaller-2);
+  opacity: 0.8;
+}
+
+/* Queue */
+.tabs {
+  display: flex;
+  gap: 16px;
+}
+.tabs button {
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.tabs button[aria-pressed='true'] {
+  color: var(--text-base);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+.sectionTitle {
+  margin-top: 8px;
+  font-size: var(--text-size-base);
+  font-weight: 700;
+}
+.sectionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.qrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  margin: 0 -8px;
+  border-radius: var(--radius-larger);
+  cursor: pointer;
+}
+.qrow:hover {
+  background: var(--background-tinted-base);
+}
+.qcover {
+  position: relative;
+  width: 48px;
+  flex: none;
+}
+.qplay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-base);
+  background: rgb(0 0 0 / 60%);
+  opacity: 0;
+}
+.qrow:hover .qplay {
+  opacity: 1;
+}
+.qtext {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.qtitle {
+  font-size: var(--text-size-base);
+}
+.qcurrent .qtitle {
+  color: var(--accent);
+}
+.qsub {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.qsub a:hover {
+  text-decoration: underline;
+  color: var(--text-base);
+}
+.qmore {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-subdued);
+  opacity: 0;
+}
+.qrow:hover .qmore,
+.qmore[data-state='open'] {
+  opacity: 1;
+}
+.qmore:hover {
+  color: var(--text-base);
+}
+.sparkle {
+  color: var(--accent);
+  flex: none;
+}
+
+/* Devices */
+.device {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  margin: 0 -4px;
+  border-radius: var(--radius-larger-2);
+  text-align: left;
+}
+.device:hover {
+  background: var(--background-tinted-base);
+}
+.device span {
+  display: flex;
+  flex-direction: column;
+}
+.device small {
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller-2);
+}
+.deviceActive {
+  background: var(--background-highlight);
+  color: var(--accent);
+}
+.noDevices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+}
+.noDevices h3 {
+  font-size: var(--text-size-base);
+}
+
+/* Friends */
+.friend {
+  display: flex;
+  gap: 12px;
+}
+.friendAvatar {
+  width: 40px;
+  flex: none;
+}
+.friendText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: var(--text-size-smaller);
+}
+.friendTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.friendNow {
+  display: inline-flex;
+  color: var(--accent);
+}
+.friendContext {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.friendContext:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+
+/* The panel body scrolls; its cards must keep their natural height instead of being squeezed. */
+.body > * {
+  flex-shrink: 0;
+}
+
+/* About the artist (card + dialog) */
+.aboutCard {
+  cursor: pointer;
+  transition: background-color var(--duration-short);
+}
+.aboutCard:hover {
+  background: var(--background-elevated-highlight);
+}
+.aboutCard:focus-visible {
+  outline: 2px solid var(--text-base);
+  outline-offset: 2px;
+}
+.aboutCard .aboutImage {
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+.aboutCard .aboutImage::after {
+  background: linear-gradient(180deg, rgb(0 0 0 / 65%) 0%, rgb(0 0 0 / 15%) 40%, transparent 60%);
+}
+.aboutCard .aboutLabel {
+  font-size: var(--text-size-base);
+  text-shadow: 0 1px 6px rgb(0 0 0 / 60%);
+}
+.aboutName {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: var(--text-size-base);
+}
+.verifiedSmall {
+  color: #4cb3ff;
+}
+.aboutSkeleton {
+  aspect-ratio: 16 / 13;
+  background: linear-gradient(90deg, #1f1f1f, #2a2a2a, #1f1f1f);
+  background-size: 200% 100%;
+  animation: npvShimmer 1.4s infinite;
+}
+@keyframes npvShimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.aboutDialog {
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  padding: 0;
+  overflow-y: auto;
+}
+.aboutHero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 300px;
+  background: var(--artist-color) center / cover no-repeat;
+}
+.aboutHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgb(0 0 0 / 75%) 100%);
+}
+.aboutHeroText {
+  position: relative;
+  padding: 24px;
+}
+.aboutHeroText h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.verified svg {
+  color: #4cb3ff;
+}
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+.aboutStats {
+  display: flex;
+  gap: 48px;
+}
+.aboutStats div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aboutStats strong {
+  font-size: var(--text-size-larger);
+  font-weight: 800;
+}
+.aboutStats span {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.aboutGenres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.aboutGenres li {
+  padding: 4px 12px;
+  border-radius: var(--radius-rounded);
+  background: var(--background-tinted-base);
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.aboutBio {
+  color: var(--text-subdued);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.aboutActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.aboutExternal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.aboutExternal:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+/* Close button floats over the artist image: give it a dark disc so it's always readable. */
+.aboutDialog > button {
+  z-index: 2;
+  background: rgb(0 0 0 / 55%);
+  border-radius: 50%;
+}
+
+/* Touch screens: no hover to reveal the "…" of queue rows. */
+@media (hover: none) {
+  .qmore {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,43 @@
+.button {
+  margin-top: 32px;
+  min-height: 32px;
+  padding: 4px 16px 4px 12px;
+}
+.dialog {
+  width: min(800px, calc(100vw - 32px));
+}
+.hint {
+  margin: -8px 0 16px;
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: var(--radius-base);
+  text-align: left;
+}
+.option:hover {
+  background: #ffffff1a;
+}
+.option > span {
+  display: flex;
+  flex-direction: column;
+}
+.option strong {
+  font-size: var(--text-size-smaller);
+}
+.option span span {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.option[aria-pressed='true'] {
+  color: var(--accent);
+}

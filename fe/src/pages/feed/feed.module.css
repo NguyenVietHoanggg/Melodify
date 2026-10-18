@@ -1,0 +1,177 @@
+/* What's New: rows measured on open.spotify.com/content-feed (112px covers, 16px row padding, 24px gap). */
+.wrap {
+  padding: 24px var(--content-spacing) 0;
+}
+.heading {
+  font-size: var(--text-size-larger-2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.lead {
+  margin-top: 8px;
+  color: var(--text-subdued);
+  font-size: var(--text-size-smaller);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 8px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 12px;
+  border-radius: var(--radius-base);
+  transition: background-color var(--duration-short);
+}
+.row + .row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  border-top: 1px solid #ffffff1a;
+}
+.row:hover {
+  background: var(--background-highlight);
+}
+.cover {
+  flex: none;
+  width: 112px;
+  height: 112px;
+}
+@container main (max-width: 600px) {
+  .cover {
+    width: 72px;
+    height: 72px;
+  }
+}
+.text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-size-base);
+  font-weight: 700;
+}
+.title a:hover,
+.subtitle a:hover {
+  text-decoration: underline;
+}
+.newDot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--essential-announcement);
+}
+.subtitle {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.iconBtn {
+  display: grid;
+  place-items: center;
+  color: var(--text-subdued);
+}
+.iconBtn:hover {
+  color: var(--text-base);
+  transform: scale(1.04);
+}
+.on,
+.on:hover {
+  color: var(--accent);
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 16px;
+  text-align: center;
+}
+.empty h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+}
+.empty p {
+  max-width: 480px;
+  color: var(--text-subdued);
+  line-height: 1.5;
+}
+
+/* Recents */
+.group {
+  margin-top: 24px;
+}
+.groupTitle {
+  font-size: var(--text-size-large);
+  font-weight: 700;
+  padding: 0 12px 8px;
+}
+.recent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-base);
+}
+.recent:hover {
+  background: var(--background-highlight);
+}
+.recentCover {
+  flex: none;
+  width: 56px;
+  height: 56px;
+}
+.recentText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.recentTitle {
+  font-weight: 600;
+}
+.recentSub {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.recentTime {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.recentPlay {
+  opacity: 0;
+  transition: opacity var(--duration-short);
+}
+.recent:hover .recentPlay,
+.recentPlay:focus-visible {
+  opacity: 1;
+}

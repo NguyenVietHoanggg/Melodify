@@ -1,0 +1,264 @@
+/* Inputs measured on accounts.spotify.com: 48px tall, 4px radius, 1px #7c7c7c inset border. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.label {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-base);
+}
+.inputWrap,
+.selectWrap {
+  position: relative;
+}
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: var(--radius-base);
+  background: var(--background-base);
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+  color: var(--text-base);
+  font: inherit;
+  font-size: var(--text-size-base);
+  transition: box-shadow var(--duration-short);
+}
+.input::placeholder {
+  color: var(--text-subdued);
+}
+.input:hover {
+  box-shadow: inset 0 0 0 1px var(--text-base);
+}
+.input:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--text-base);
+}
+.invalid,
+.invalid:hover {
+  box-shadow: inset 0 0 0 1px var(--essential-negative);
+}
+.withButton {
+  padding-right: 48px;
+}
+.reveal {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  color: var(--text-subdued);
+}
+.reveal:hover {
+  color: var(--text-base);
+}
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+.select option {
+  background: var(--background-elevated-base);
+}
+.selectIcon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-subdued);
+}
+.hint {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  line-height: 1.4;
+}
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: var(--text-negative);
+  font-size: var(--text-size-smaller);
+  line-height: 1.4;
+}
+.error > svg {
+  flex: none;
+  margin-top: 1px;
+}
+
+/* Toggle (Encore form-toggle) */
+.toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.toggleInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.toggleTrack {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 16px;
+  border-radius: var(--radius-rounded);
+  background: var(--essential-subdued);
+  transition: background-color 100ms var(--ease-standard);
+}
+.toggleKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--background-base);
+  transition: left 100ms var(--ease-standard), width 100ms var(--ease-standard);
+}
+.toggleInput:checked + .toggleTrack {
+  background: var(--essential-bright-accent);
+}
+.toggleInput:checked + .toggleTrack .toggleKnob {
+  left: 14px;
+}
+.toggle:hover .toggleTrack {
+  filter: brightness(1.1);
+}
+.toggle:active .toggleKnob {
+  width: 16px;
+}
+.toggle:active .toggleInput:checked + .toggleTrack .toggleKnob {
+  left: 10px;
+}
+.toggleInput:focus-visible + .toggleTrack {
+  outline: 2px solid var(--text-base);
+  outline-offset: 2px;
+}
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Checkbox */
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-larger-2);
+  background: var(--background-highlight);
+  font-size: var(--text-size-smaller);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+.box {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  border-radius: var(--radius-base);
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+  color: #000;
+}
+.checkbox input:checked + .box {
+  background: var(--accent);
+  box-shadow: none;
+}
+.checkbox input:focus-visible + .box {
+  outline: 2px solid var(--text-base);
+  outline-offset: 2px;
+}
+.checkboxError .box {
+  box-shadow: inset 0 0 0 1px var(--essential-negative);
+}
+
+/* Radios */
+.radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: var(--text-size-base);
+}
+.radio input {
+  position: absolute;
+  opacity: 0;
+}
+.dotOuter {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #7c7c7c;
+}
+.dotInner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+}
+.radioOn .dotOuter {
+  background: var(--accent);
+  box-shadow: none;
+}
+.radioOn .dotInner {
+  background: #000;
+}
+.radio:hover .dotOuter {
+  box-shadow: inset 0 0 0 1px var(--text-base);
+}
+.radio input:focus-visible + .dotOuter {
+  outline: 2px solid var(--text-base);
+  outline-offset: 2px;
+}
+.radioText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.radioHint {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.input:disabled,
+.input:read-only:not(select) {
+  color: var(--text-subdued);
+  box-shadow: inset 0 0 0 1px #3e3e3e;
+  cursor: default;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "melodify",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Melodify — a Spotify-style music streaming app. fe = UI only, be = all business logic.",
+  "workspaces": [
+    "be",
+    "fe"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n be,fe -c blue,green \"npm:dev -w be\" \"npm:dev -w fe\"",
+    "dev:be": "npm run dev -w be",
+    "dev:fe": "npm run dev -w fe",
+    "build": "npm run build -w fe && npm run build -w be",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "db:migrate": "npm run db:migrate -w be --",
+    "db:seed": "npm run db:seed -w be --",
+    "import:audius": "npm run import:audius -w be --",
+    "import:podcasts": "npm run import:podcasts -w be --",
+    "format": "prettier --write \"**/*.{ts,tsx,css,json,md}\"",
+    "dev:local": "concurrently -k -n db,be,fe -c gray,blue,green \"npm:db:local -w be\" \"npm:dev:local -w be\" \"npm:dev -w fe\"",
+    "local:setup": "npm run local:setup -w be"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2"
+  }
+}

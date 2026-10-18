@@ -1,0 +1,46 @@
+.wrap {
+  position: relative;
+}
+.row {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.row::-webkit-scrollbar {
+  display: none;
+}
+.cell {
+  flex: 0 0 var(--card-width, 180px);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+.arrow {
+  position: absolute;
+  top: calc(var(--card-width, 180px) / 2 - 16px);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1f1f1f;
+  color: #fff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+  opacity: 0;
+  transition: opacity 200ms, transform 100ms;
+}
+.wrap:hover .arrow {
+  opacity: 1;
+}
+.arrow:hover {
+  transform: scale(1.06);
+  background: #2a2a2a;
+}
+.left {
+  left: 4px;
+}
+.right {
+  right: 4px;
+}

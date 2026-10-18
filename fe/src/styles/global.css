@@ -1,0 +1,168 @@
+@import '@fontsource-variable/plus-jakarta-sans';
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background-app);
+  color: var(--text-base);
+  font-family: var(--font-sans);
+  font-size: var(--text-size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: #2e77d0;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--essential-base);
+  outline-offset: 2px;
+}
+
+/* Spotify-style overlay scrollbars: invisible until the area is hovered. */
+.scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.scroll:hover {
+  scrollbar-color: rgb(255 255 255 / 30%) transparent;
+}
+.scroll::-webkit-scrollbar {
+  width: 12px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.scroll:hover::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 30%);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.link-hover:hover {
+  text-decoration: underline;
+  color: var(--text-base);
+}
+
+/* Animated "now playing" equalizer bars (used in track rows and the queue). */
+.eq-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 14px;
+  height: 14px;
+}
+.eq-bars i {
+  flex: 1;
+  background: var(--accent);
+  border-radius: 1px;
+  animation: eq 0.9s ease-in-out infinite alternate;
+}
+.eq-bars i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.eq-bars i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+@keyframes eq {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+/* Native fieldsets group form controls for screen readers; visually they're invisible (like Spotify's). */
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+legend {
+  padding: 0;
+}

@@ -1,0 +1,211 @@
+.hero {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+}
+.glow {
+  position: absolute;
+  inset: -200px -100px auto;
+  height: 620px;
+  background:
+    radial-gradient(420px 260px at 30% 40%, rgb(30 215 96 / 35%), transparent 70%),
+    radial-gradient(460px 300px at 70% 30%, rgb(132 0 231 / 45%), transparent 70%),
+    radial-gradient(400px 260px at 50% 70%, rgb(39 133 106 / 35%), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.inner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px var(--content-spacing) 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-rounded);
+  background: rgb(255 255 255 / 12%);
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.title {
+  font-size: clamp(2.5rem, 6cqw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.subtitle {
+  max-width: 560px;
+  color: var(--text-subdued);
+  line-height: 1.5;
+}
+.box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px 8px 8px 20px;
+  border-radius: var(--radius-rounded);
+  background: var(--background-elevated-highlight);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%), inset 0 0 0 1px #ffffff1a;
+}
+.box:focus-within {
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%), inset 0 0 0 2px var(--text-base);
+}
+.box input {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--text-base);
+  font: inherit;
+  font-size: var(--text-size-base);
+}
+.box input:focus {
+  outline: none;
+}
+.box input::placeholder {
+  color: var(--text-subdued);
+}
+.error {
+  color: var(--text-negative);
+  font-size: var(--text-size-smaller);
+}
+.remaining {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.how {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 560px;
+  margin-top: 24px;
+  font-size: var(--text-size-smaller-2);
+  color: var(--text-subdued);
+}
+.upsell {
+  margin-top: 16px;
+  padding: 32px;
+  border-radius: var(--radius-larger-2);
+  background: rgb(0 0 0 / 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.upsell h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+}
+.upsell p {
+  color: var(--text-subdued);
+}
+.working {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-weight: 700;
+}
+.orb {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #1ed760, #8400e7, #27856a, #1ed760);
+  animation: spin 2.4s linear infinite;
+  box-shadow: 0 0 60px rgb(30 215 96 / 45%);
+}
+.orb svg {
+  animation: spin 2.4s linear infinite reverse;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.promptEcho {
+  font-weight: 400;
+  color: var(--text-subdued);
+}
+
+/* Refine panel (playlist page) */
+.refine {
+  margin: 0 var(--content-spacing) 16px;
+  padding: 16px;
+  border-radius: var(--radius-larger-2);
+  background: linear-gradient(135deg, rgb(132 0 231 / 25%), rgb(30 215 96 / 15%));
+  box-shadow: inset 0 0 0 1px #ffffff1a;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.refineHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+}
+.prompts {
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+}
+.intent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.intent li {
+  padding: 4px 10px;
+  border-radius: var(--radius-rounded);
+  background: rgb(255 255 255 / 10%);
+  font-size: var(--text-size-smaller-2);
+  font-weight: 700;
+}
+.refineBox {
+  display: flex;
+  gap: 8px;
+}
+.refineBox input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radius-rounded);
+  background: rgb(0 0 0 / 35%);
+  color: var(--text-base);
+  font: inherit;
+  font-size: var(--text-size-smaller);
+}
+.refineBox input:focus {
+  outline: 2px solid var(--text-base);
+}

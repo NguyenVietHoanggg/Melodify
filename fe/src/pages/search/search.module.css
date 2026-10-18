@@ -1,0 +1,155 @@
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  padding-bottom: 16px;
+}
+.category {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  min-height: 112px;
+  border-radius: var(--radius-larger-2);
+  overflow: hidden;
+  isolation: isolate;
+}
+.categoryName {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  font-size: var(--text-size-larger);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.categoryImg {
+  position: absolute;
+  right: -5%;
+  bottom: -2%;
+  width: 45%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-base);
+  transform: rotate(25deg) translate(18%, -2%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  z-index: -1;
+}
+.clearRecent {
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: var(--text-subdued);
+}
+.clearRecent:hover {
+  color: var(--text-base);
+  text-decoration: underline;
+}
+
+.chips {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+  padding: 12px var(--content-spacing);
+  background: var(--background-base);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.h2 a:hover {
+  text-decoration: underline;
+}
+.topRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  padding: 8px var(--content-spacing) 0;
+}
+@container main (min-width: 900px) {
+  .topRow {
+    grid-template-columns: minmax(300px, 2fr) minmax(0, 3fr);
+  }
+}
+.top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: var(--radius-larger-2);
+  background: #181818;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.top:hover {
+  background: #282828;
+}
+.topImage {
+  width: 92px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+  border-radius: var(--radius-larger);
+}
+.round {
+  border-radius: 50%;
+}
+.topName {
+  font-size: var(--text-size-larger-2);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.topMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-size-smaller);
+  color: var(--text-subdued);
+  min-width: 0;
+}
+.badge {
+  flex: none;
+  padding: 4px 12px;
+  border-radius: var(--radius-rounded);
+  background: #121212;
+  color: var(--text-base);
+  font-weight: 700;
+}
+.topPlay {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 300ms, transform 300ms;
+}
+.top:hover .topPlay {
+  opacity: 1;
+  transform: none;
+}
+.songs {
+  min-width: 0;
+}
+.uploadsHead {
+  padding: 0 12px;
+}
+
+/* Phones: two smaller tiles per row, like Spotify's mobile "Browse all". */
+@container main (max-width: 560px) {
+  .categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .category {
+    min-height: 96px;
+  }
+  .categoryName {
+    font-size: var(--text-size-base);
+  }
+}

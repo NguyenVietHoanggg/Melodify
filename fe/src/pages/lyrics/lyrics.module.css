@@ -1,0 +1,86 @@
+.page {
+  min-height: 100%;
+  background: color-mix(in srgb, var(--lyrics-bg) 85%, #000);
+  transition: background-color 600ms;
+}
+.lines {
+  max-width: 1000px;
+  padding: 48px clamp(24px, 6cqw, 96px) 120px;
+}
+.line {
+  margin: 0 0 clamp(12px, 1.6cqw, 24px);
+  font-size: clamp(1.5rem, 3.4cqw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: color-mix(in srgb, var(--lyrics-bg) 35%, #fff);
+  cursor: pointer;
+  transition: color 300ms;
+}
+.line:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.past {
+  color: color-mix(in srgb, var(--lyrics-bg) 20%, #fff);
+  opacity: 0.75;
+}
+.active {
+  color: #fff;
+  opacity: 1;
+}
+.static {
+  cursor: default;
+  color: #fff;
+}
+.static:hover {
+  text-decoration: none;
+}
+.notice {
+  margin-bottom: 32px;
+  font-size: var(--text-size-smaller);
+  font-weight: 700;
+  color: #ffffffb3;
+}
+.provider {
+  margin-top: 48px;
+  font-size: var(--text-size-smaller);
+  color: #ffffffb3;
+}
+.none {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 120px 24px;
+  text-align: center;
+}
+.none h2 {
+  font-size: var(--text-size-larger-2);
+  font-weight: 800;
+}
+
+/* Static block on the track page */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 640px;
+  padding-bottom: 24px;
+}
+.block h2 {
+  font-size: var(--text-size-larger);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.block p {
+  color: var(--text-subdued);
+  font-size: var(--text-size-base);
+}
+.block small {
+  margin-top: 16px;
+  color: var(--text-subdued);
+}
+.blockCompact p {
+  font-size: var(--text-size-smaller);
+}
